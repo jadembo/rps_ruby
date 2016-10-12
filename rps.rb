@@ -7,44 +7,55 @@ tie = 0
 while true
 
   puts 'Enter your move'
-  move = gets.chomp.downcase
-  computer_move = choices.sample
+  input = gets.chomp.downcase
 
-  if move == 'quit'
+  if input == 'r' || input == '2' || input == 'rock'
+    your_move = 'rock'
+
+  elsif input == 'p' || input == '1' || input == 'paper'
+    your_move = 'paper'
+
+  elsif input == 's' || input == '3' || input == 'scissors'
+    your_move = 'scissors'
+
+  elsif input == 'q' || input == 'quit' || input == 'exit' || input == 'e'
     break
+
+  else
+    puts 'That does\'t seem to be a valid move'
+    your_move = 'invalid'
   end
 
-  if move == computer_move
-    puts 'Your opponent played ' + computer_move
-    result = 'tie'
+  computer_move = choices.sample
 
-  elsif move == 'rock'
+  if your_move != 'invalid'
+    puts 'You played ' + your_move
     puts 'Your opponent played ' + computer_move
+  end
+
+  if your_move == computer_move
+    result = 'tie'
+  elsif your_move == 'rock'
     if computer_move == 'paper'
       result = 'lose'
     else
       result = 'win'
     end
 
-  elsif move == 'paper'
-    puts 'Your opponent played ' + computer_move
+  elsif your_move == 'paper'
     if computer_move == 'rock'
       result = 'win'
     else
       result = 'lose'
     end
 
-  elsif move == 'scissors'
-    puts 'Your opponent played ' + computer_move
+  elsif your_move == 'scissors'
     if computer_move =='rock'
       result = 'lose'
     else
       result = 'win'
     end
 
-  else
-    puts 'That does\'t seem to be a valid move'
-    result = 'invalid'
   end
 
   if result == 'win'
