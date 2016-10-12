@@ -4,6 +4,8 @@ win = 0
 lose = 0
 tie = 0
 
+puts 'Welcome to Rock, Paper, Scissors!'
+
 while true
 
   puts 'Enter your move'
